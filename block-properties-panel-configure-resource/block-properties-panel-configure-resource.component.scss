@@ -1,0 +1,68 @@
+@import 'styles';
+
+app-block-properties-panel-configure-resource {
+  height: 100%;
+
+  div.block-panel {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  div.item-title {
+    color: $uC-res-req-text;
+    background-color: $uC-res-req-bg;
+    height: 54rem;
+    width: 18px;
+  }
+
+  .title {
+    writing-mode: vertical-rl;
+    text-align: center;
+    transform: rotate(180deg);
+    width: 18px;
+    position: relative;
+    top: 11rem;
+    font-size: 12px;
+  }
+
+  div.item-content {
+    height: 100%;
+    width: 100%;
+    float: left;
+    display: grid;
+  }
+
+  .column {
+    float: left;
+    width: 20%;
+    border-right: 1px solid $primary_small__enabled__fill__default;
+  }
+
+  .column.res-list {
+    padding: 0;
+    width: 17%;
+  }
+
+  .column.save-buttons {
+    padding: 0;
+    width: 23%;
+  }
+
+  .configure-resource-panel-reference {
+    overflow-y: scroll  !important;
+    height: 100%;
+  }
+
+  .configure-resource-panel {
+    overflow: hidden;
+  }
+
+  .configure-resource-panel-reference::-webkit-scrollbar {
+    display: none;
+  }
+
+  #configure-resource-div{
+    overflow: hidden !important;
+  }
+}

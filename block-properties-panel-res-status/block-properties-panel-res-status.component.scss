@@ -1,0 +1,33 @@
+@import '@bosch/rbang/src/assets/styles/colors/colors';
+@import 'styles';
+
+app-block-properties-panel-res-status {
+  .res-status-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div.right-button-menu {
+    display: flex;
+    margin-right: 52px;
+    margin-left: auto;
+    gap: 0.5em;
+    padding-top: 2px;
+  }
+
+  .dynamic-column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+
+  .title-res-status {
+    float: left;
+    width: 50%;
+    padding: 5px;
+    background-color: #cccccc;
+    margin-top: 10px;
+    height: 23px;
+    font-weight: bold;
+  }
+}

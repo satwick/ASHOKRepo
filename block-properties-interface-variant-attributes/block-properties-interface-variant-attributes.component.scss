@@ -1,0 +1,285 @@
+@import '@bosch/rbang/src/assets/styles/colors/theme_default_colors';
+
+app-block-properties-interface-variant-attributes {
+  .interface-variant-attributes-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .interface-variants {
+    padding-left: 10px;
+    padding-top: 10px;
+    min-height: 20rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    width: 23%;
+
+    h5 {
+      color: $primaryColor;
+    }
+
+    .table {
+      max-height: 20.7rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .table-header,
+     .table-row {
+       display: grid;
+       grid-template-columns: 10% 38% 32% 15%;
+       align-items: start;
+       padding: 0.30rem 0
+     }
+
+    .table-header {
+      position: sticky;
+      top: 0;
+      background: $bdds-color-white;
+      z-index: 1;
+
+      .interface-panel-title {
+        font-size: 12px;
+        color: $primaryColor;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .used {
+        text-align: center;
+      }
+    }
+
+    .table-row.item {
+      cursor: pointer;
+      font-size: 12px;
+
+      &:hover {
+        background-color: $primary_minor-accent__enabled__fill__hovered;
+      }
+
+      &.selected {
+        background-color: $primary_minor-accent__enabled__fill__pressed;
+      }
+    }
+
+    .variant {
+      display: flex;
+      flex-direction: column;
+
+      .value {
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .label-with-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      .rollback-icon{
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+
+        &.invisible {
+          visibility: hidden;
+        }
+      }
+      .delete-icon-inline {
+        background: none;
+        display: flex;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+
+        i {
+          font-size: 18px;
+          color: $primaryColor;
+        }
+
+        &:hover i {
+          color: darken($primaryColor, 10%);
+        }
+      }
+      .pi.pi-exclamation-triangle:before {
+        font-family: "Bosch-Icon", serif;
+        font-size: 22px;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 2;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: unset;
+        margin-right: 0;
+    }
+    }
+
+    .signal-type {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .used-radio {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .add-variant-button {
+      margin-top: 10px;
+      display: flex;
+      justify-content: left;
+
+      button {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: $primaryColor;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 16px;
+        }
+
+        &:hover {
+          background-color: darken($primaryColor, 8%);
+        }
+      }
+
+    }
+
+  }
+
+
+
+
+  .interface-attributes {
+    flex-grow: 1;
+    min-width: 300px;
+    padding: 10px;
+    min-height: 20rem;
+    overflow: hidden;
+
+    .interface-attributes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding-right: 8px;
+      gap: 8px;
+
+      h5 {
+        color: $primaryColor;
+      }
+
+      .panel-icons {
+        background: none;
+        border: none;
+        padding-left: 8px;
+        margin: 0;
+        cursor: pointer;
+        user-select: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .table-row {
+      padding-top: 1px;
+      font-size: 1rem;
+
+      .interface-panel-title {
+        color: $primaryColor;
+      }
+
+      .attribute-textarea {
+        width: 20%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        resize: none;
+        overflow: hidden;
+        padding: 5px 0;
+        font-size: 14px;
+        line-height: 1.5;
+        font-family: 'Bosch Sans';
+
+        &:focus {
+          border-bottom: 1px solid $primaryColor;
+        }
+      }
+    }
+  }
+
+  .readonly-attribute-field {
+    display: block;
+    width: 20%;
+    border: none;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 4px 0;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .uC-resource-requirement-variant {
+    width: 85%;
+  }
+
+  .label-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .rollback-icon-inline {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .used {
+    text-align: center;
+  }
+
+  .error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,28 @@
+app-block-properties-panel {
+  height: 100%;
+
+  div.block-panel {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  div.item-title {
+    color: white;
+    background-color: #007BC0;
+    writing-mode: vertical-rl;
+    text-align: center;
+    transform: rotate(180deg);
+    min-height: 28rem
+  }
+
+  div.item-content {
+    height: 100%;
+    width: 100%;
+    float: left;
+    display: grid;
+  }
+}
+
+
+

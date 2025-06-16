@@ -1,0 +1,89 @@
+<div
+  class="configure-resource-panel"
+  data-qa="block-properties-panel-configure-resource-configure-resource-panel-div-cbbb39"
+>
+  @if(context){
+  <div
+    class="block-panel"
+    data-qa="block-properties-panel-configure-resource-block-panel-div-740c3f"
+  >
+    <div
+      class="item-title"
+      data-qa="block-properties-panel-configure-resource-item-title-div-8caf45"
+    >
+      <span
+        class="title"
+        data-qa="block-properties-panel-configure-resource-title-span-38cdeb"
+        >{{ context.name }}</span
+      >
+    </div>
+    <div
+      [ngStyle]="height <= minHeight ? null : { overflow: 'auto' }"
+      id="configure-resource-div"
+      class="item-content"
+      data-qa="block-properties-panel-configure-resource-item-content-div-cb2e87"
+    >
+      <div
+        data-qa="block-properties-panel-configure-resource-rbang-tabview-da9d4b"
+        style="display: flex; height: 100%"
+      >
+        <div
+          class="column"
+          data-qa="block-properties-panel-configure-resource-column-div-7bb068"
+        >
+          <app-block-properties-panel-id
+            (stateOfChangedIdResource)="stateOfIdResourceChange($event)"
+            [project]="project"
+            data-qa="block-properties-panel-configure-resource-app-block-properties-panel-id-1c224f"
+          ></app-block-properties-panel-id>
+        </div>
+        <div
+          class="column"
+          data-qa="block-properties-panel-configure-resource-column-div-a1288c"
+        >
+          <app-block-properties-panel-kernel
+            (dataEventKernel)="receiveKernelState($event)"
+            (stateOfChangedKernel)="stateOfKernelChange($event)"
+            [copySelected]="(idState | async)?.checkboxes?.isCopy"
+            [irqSelected]="(idState | async)?.checkboxes?.isIrq"
+            [project]="project"
+            data-qa="block-properties-panel-configure-resource-app-block-properties-panel-kernel-8add9e"
+          ></app-block-properties-panel-kernel>
+        </div>
+        <div
+          class="column"
+          data-qa="block-properties-panel-configure-resource-column-div-30fbf7"
+        >
+          <app-block-properties-panel-channel
+            (dataEventChannel)="receiveChannelState($event)"
+            (stateOfChangedChannel)="stateOfChannelChange($event)"
+            [copySelected]="(idState | async)?.checkboxes?.isCopy"
+            [irqSelected]="(idState | async)?.checkboxes?.isIrq"
+            [project]="project"
+            data-qa="block-properties-panel-configure-resource-app-block-properties-panel-channel-7238f5"
+          ></app-block-properties-panel-channel>
+        </div>
+        <div
+          class="column res-list"
+          data-qa="block-properties-panel-configure-resource-column-div-5e894y"
+        >
+          <app-block-properties-panel-resource-list
+            [project]="project"
+            data-qa="block-properties-panel-configure-resource-app-block-properties-panel-resource-list"
+          ></app-block-properties-panel-resource-list>
+        </div>
+        <div
+          class="column save-buttons"
+          data-qa="block-properties-panel-configure-resource-column-div-5e894b"
+        >
+          <app-block-properties-panel-res-status
+            [project]="project"
+            [resourceStatus]="resourceState"
+            data-qa="block-properties-panel-configure-resource-app-block-properties-panel-res-status-7d3ed4"
+          ></app-block-properties-panel-res-status>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

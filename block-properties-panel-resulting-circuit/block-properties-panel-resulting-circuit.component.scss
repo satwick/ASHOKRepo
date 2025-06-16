@@ -1,0 +1,36 @@
+@import 'styles';
+
+app-block-properties-panel-resulting-circuit{
+  height: 100%;
+
+  div.block-panel {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  div.item-title {
+    color: white;
+    background-color: $background-lightblue;
+    writing-mode: vertical-rl;
+    text-align: center;
+    transform: rotate(180deg);
+  }
+
+  div.item-content {
+    height: 100%;
+    width: 100%;
+    float: left;
+    display: grid;
+  }
+
+  .left-container {
+    margin: 2.50em 1em;
+    width: 400px;
+    overflow: hidden;
+  }
+
+  .property-container #general-tab-text-area-id > div > div > input {
+    font-weight: normal;
+  }
+}

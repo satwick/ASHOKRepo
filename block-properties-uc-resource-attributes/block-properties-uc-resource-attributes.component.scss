@@ -1,0 +1,117 @@
+@import '@bosch/rbang/src/assets/styles/colors/theme_default_colors';
+
+.resource-attributes {
+  h5 {
+    color: $primaryColor;
+  }
+
+  min-height: 20rem;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 75%;
+
+  .attribute-dropdown {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 14px;
+    font-family: 'Bosch Sans';
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    line-height: 1.5;
+
+    &:focus {
+      border-color: $primaryColor;
+      outline: none;
+    }
+  }
+
+  .button-div-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width : 100%;
+    gap : 10px;
+  }
+  .grid-table {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    gap: 0.3rem 1rem;
+  }
+  .label{
+    color: $primaryColor;
+    margin-bottom: 4px;
+    white-space: nowrap;
+  }
+  .grid-cell {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 0;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 90%;
+    margin-bottom: 25px;
+
+    .table-header {
+      color: $primaryColor;
+    }
+
+    th {
+      font-weight: unset;
+    }
+
+    th, td {
+      border-right: 1px solid rgba(0,0,0,0.12);
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      height: 40px;
+      text-align: center;
+    }
+
+    th:last-child {
+      border-right: unset;
+    }
+
+    td:last-child {
+      border-right: unset;
+    }
+
+    tbody {
+      tr:last-child {
+        th, td {
+          border-bottom: unset;
+        }
+      }
+    }
+  }
+  .attribute-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    resize: none;
+    padding: 4px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'Bosch Sans';
+    background-color: white;
+
+    &:focus {
+      border-bottom: 1px solid $primaryColor;
+    }
+  }
+  .info-message-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+  }
+
+  .info-icon {
+      height: 20px;
+      width: 20px;
+  }
+
+  .boschicon-bosch-ic-alert-info-filled {
+      color: #007BC0;
+  }
+}

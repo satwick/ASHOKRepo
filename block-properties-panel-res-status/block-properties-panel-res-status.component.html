@@ -1,0 +1,36 @@
+<div
+  class="res-status-container"
+  data-qa="block-properties-panel-res-status-container"
+>
+  <div
+    class="right-button-menu"
+    data-qa="block-properties-panel-res-status-right-button-menu-div-80f213"
+  >
+    <rbang-button
+      (onClick)="save()"
+      [disabled]="!this.saveEnabled"
+      data-qa="block-properties-panel-res-status-rbang-button-46dd71"
+      label="{{
+        'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.BUTTONS.SAVE' | translate
+      }}"
+    >
+    </rbang-button>
+    <rbang-button
+      (onClick)="resetFunction(resource)"
+      [disabled]="!this.resetEnabled"
+      data-qa="block-properties-panel-res-status-rbang-button-fb861a"
+      label="{{
+        'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.BUTTONS.RESET' | translate
+      }}"
+    >
+    </rbang-button>
+    <rbang-button
+      (onClick)="openInterfaceView()"
+      data-qa="block-properties-panel-res-status-rbang-button-1aaf01"
+      label="{{
+        'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.BUTTONS.INTERFACE_VIEW' | translate
+      }}"
+    >
+    </rbang-button>
+  </div>
+</div>

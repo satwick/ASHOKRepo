@@ -1,0 +1,77 @@
+<div
+  class="interface-to-uc-container"
+  data-qa="block-properties-interface-panel-interface-to-uc-container-div-7169d4"
+>
+  @if (functionModule) {
+    <div
+      class="interfaces-panel"
+      data-qa="block-properties-interface-panel-interfaces-panel-div-afc8da"
+      [ngStyle]="{ 'min-width': isSidePanelOpen ? '15%' : '13.5%' }"
+    >
+      <h5
+        [textContent]="
+          'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.INTERFACE' | translate
+        "
+        data-qa="block-properties-interface-panel-h5-08c821"
+      ></h5>
+
+      <div class="table" #listContainer>
+        <div class="table-row table-header">
+          <div></div>
+          <div class="interface-panel-title">
+            {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.RB_NAME' | translate }}
+          </div>
+          <div class="interface-panel-title used">
+            {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.USED' | translate }}
+          </div>
+        </div>
+
+        @for (interfaceToUc of functionModule.children; track assignmentUtils.getValue(interfaceToUc, 'rbName')) {
+          <div
+            (click)="selectInterface(interfaceToUc)"
+            [appScrollIntoView]="interfaceToUc.id === selectedInterface?.id"
+            [id]="assignmentUtils.getValue(interfaceToUc, 'rbName')"
+            [ngClass]="{
+              selected: interfaceToUc.id === selectedInterface?.id,
+              focused: selectedVariant
+            }"
+            class="table-row item"
+            tabindex="1"
+          >
+            <button
+              class="rollback-icon"
+              [ngClass]="{ invisible: !hasModifiedAssignments(interfaceToUc) }"
+              [disabled]="interfaceToUc.id !== selectedInterface?.id"
+              (click)="resetSingleInterface(interfaceToUc)"
+            >
+              <img src="assets/icons/rollback-icon.png" alt="Reset" />
+            </button>
+            <div
+              [pTooltip]="String(assignmentUtils.getValue(interfaceToUc, 'rbName')) | tooltipShow : textSize : characterThreshold"
+              class="interface"
+              tooltipPosition="bottom"
+            >
+              {{ String(assignmentUtils.getValue(interfaceToUc, 'rbName')) | truncate : textSize }}
+            </div>
+
+            <div class="checkbox">
+              <input
+                type="checkbox"
+                [checked]="getIsUsedCheckboxState(interfaceToUc)"
+                (change)="onInterfaceCheckboxClicked(interfaceToUc, $event)"
+              />
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+
+  @if (selectedInterface) {
+    <div class="interface-variants-attributes-panel">
+      <app-block-properties-interface-variant-attributes>
+      </app-block-properties-interface-variant-attributes>
+    </div>
+  }
+</div>

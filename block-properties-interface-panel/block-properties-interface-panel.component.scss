@@ -1,0 +1,116 @@
+@import '@bosch/rbang/src/assets/styles/colors/theme_default_colors';
+
+app-block-properties-interface-panel {
+  .interface-to-uc-container {
+    display: flex;
+    width: 100%;
+  }
+  .top-right-buttons {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+    background-color: $bdds-color-white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  .interfaces-panel {
+    padding-left: 10px;
+    padding-top: 10px;
+    min-height: 20rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+    h5 {
+      color: $primaryColor;
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 10% 65% 25%; // rollback, RB name, used
+      align-items: center;
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      background: $bdds-color-white;
+      z-index: 1;
+    }
+
+    .table-row.item {
+      cursor: pointer;
+    }
+
+    .table-row.item.selected {
+      background-color: $primary_minor-accent__enabled__fill__pressed;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 10% 65% 25%;
+      padding: 0.25rem 0;
+      align-items: center;
+
+      .interface-panel-title {
+        color: $primaryColor;
+      }
+
+      .used {
+        text-align: center;
+      }
+
+      .interface {
+        word-break: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .checkbox {
+        text-align: center;
+      }
+    }
+
+    .rollback-icon {
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      &.invisible {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .interface-variants-attributes-panel {
+    flex-grow: 1;
+    min-width: 200px;
+  }
+
+
+
+  .panel-reset-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

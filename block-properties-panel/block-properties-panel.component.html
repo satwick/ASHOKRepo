@@ -1,0 +1,59 @@
+@if (context){
+  <div data-qa="block-properties-panel-ng-template-7c523c">
+  <div
+    data-qa="block-properties-panel-block-panel-div-b1b5f7"
+    class="block-panel"
+  >
+
+    <div
+      data-qa="block-properties-panel-item-title-div-6cb6a2"
+      class="item-title"
+      [ngClass]=""
+    >
+      {{ getSelectedObjectName() }}
+    </div>
+    <div
+      data-qa="block-properties-panel-item-content-div-02a6d9"
+      class="item-content"
+    >
+      <p-tabView
+        data-qa="block-properties-panel-rbang-tabview-ed4a80"
+        [activeIndex]="activeIndexPropertiesPanel"
+        (activeIndexChange)="changeTab($event)"
+      >
+        <p-tabPanel
+          [cache]="false"
+          data-qa="block-properties-panel-rbang-tabpanel-03eb5a"
+          [header]="
+            'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.GENERAL_TAB.PROPERTIES'
+              | translate
+          "
+        >
+          @if (activeIndexPropertiesPanel === blockPropertyTab.GENERAL){
+            <app-block-general-tab
+            data-qa="block-properties-panel-app-block-general-tab-884977"
+            [functionModule]="context.designObject"
+            [title]="context.name"
+          ></app-block-general-tab>
+          }
+        </p-tabPanel>
+        <p-tabPanel
+          [cache]="false"
+          data-qa="block-properties-panel-rbang-tabpanel-e7bb97"
+          [header]="
+            'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.INTERFACES_TO_MICROCONTROLLER'
+              | translate
+          "
+        >
+          @if (activeIndexPropertiesPanel === blockPropertyTab.INTERFACE_TO_MICROCONTROLLER){
+          <app-block-interfaces-to-microcontroller-tab
+            data-qa="block-properties-panel-app-block-interfaces-to-microcontroller-tab-6cc369"
+            [title]="context.name"
+          ></app-block-interfaces-to-microcontroller-tab>
+          }
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+}

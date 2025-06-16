@@ -1,0 +1,292 @@
+<div
+  data-qa="block-properties-interface-variant-attributes-interface-variant-attributes-container-div-142191"
+  class="interface-variant-attributes-container"
+>
+@if(interface) {
+  <div class="interface-variants">
+    <h5>
+      {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.INTERFACE_VARIANTS' | translate }}
+    </h5>
+
+    <div class="table">
+      <!-- Table Header -->
+      <div class=" table-header">
+        <div class="interface-panel-title"></div>
+        <div class="interface-panel-title">RB Name</div>
+        <div class="interface-panel-title">SignalType</div>
+        <div class="interface-panel-title used">Used</div>
+      </div>
+
+      <!-- Table Rows -->
+      @for (interfaceVariant of interface.children; track trackById) {
+        <div
+          tabindex="1"
+          (click)="selectVariant(interfaceVariant)"
+          [appScrollIntoView]="selectedVariant?.id === interfaceVariant.id"
+          [id]="assignmentUtils.getValue(interfaceVariant,'rbName')"
+          [ngClass]="{
+            selected: selectedVariant?.id === interfaceVariant.id,
+            focused: selectedResource
+          }"
+          class="table-row item"
+        >
+          <!-- <button
+              class="rollback-icon"
+              [ngClass]="{ invisible:!hasModifiedAssignments(interfaceVariant) }"
+              [disabled]="interfaceVariant.id !== selectedVariant?.id"
+              (click)="resetSingleInterfaceVariant(interfaceVariant)"
+            >
+              <img src="assets/icons/rollback-icon.png" alt="Reset" />
+          </button> -->
+          <!-- RB Name -->
+
+            <span class="label-with-icon">
+              <button
+              class="rollback-icon"
+              *ngIf="interfaceVariant.directId "
+              [ngClass]="{ invisible:!hasModifiedAssignments(interfaceVariant)  }"
+              [disabled]="interfaceVariant.id !== selectedVariant?.id"
+              (click)="resetSingleInterfaceVariant(interfaceVariant)"
+            >
+              <img src="assets/icons/rollback-icon.png" alt="Reset" />
+             </button>
+              <!-- Inline delete icon like rollback, only on selection -->
+              <button
+                *ngIf="!interfaceVariant.directId"
+                class="delete-icon-inline"
+                (click)="onDeleteClick(interfaceVariant)"
+                [disabled]="interfaceVariant.id !== selectedVariant?.id"
+                pTooltip="Delete Variant"
+                tooltipPosition="top"
+              >
+                <i class="pi pi-trash"></i>
+              </button>
+            </span>
+        <div class="variant">
+            <div class="value">
+              {{ assignmentUtils.getRbName(interfaceVariant) }}
+            </div>
+          </div>
+
+          <!-- Signal Type -->
+          <div class="signal-type">
+            {{ assignmentUtils.getValue(interfaceVariant, 'signalType') }}
+          </div>
+
+          <!-- Used radio -->
+          <div class="used-radio">
+            <input
+              type="radio"
+              name="variantUsed"
+              [checked]="getIsUsedRadioState(interfaceVariant)"
+              (change)="onVariantRadioClicked(interface, interfaceVariant)"
+            />
+          </div>
+        </div>
+      }
+
+      <!-- Add Variant Button -->
+      <div class="add-variant-button">
+        <button
+          pTooltip="Add Interface Variant"
+          tooltipPosition="top"
+          (click)="addInterfaceVariant()"
+        >
+          <i class="pi pi-plus"></i>
+        </button>
+      </div>
+      <p-confirmDialog icon="pi pi-exclamation-triangle" key="variantDeleteConfirm"></p-confirmDialog>
+    </div>
+  </div>
+}
+  @if(selectedVariant){
+  <div
+    data-qa="block-properties-interface-variant-attributes-uC-resource-requirement-variant-div-d62cc1"
+    class="uC-resource-requirement-variant"
+  >
+    <app-block-properties-uc-resource-requirements
+      data-qa="block-properties-interface-variant-attributes-app-block-properties-uc-resource-requirements-987148"
+    ></app-block-properties-uc-resource-requirements>
+  </div>
+  }
+  @if (interface && !selectedVariant) {
+    <div
+      data-qa="block-properties-interface-variant-attributes-interface-attributes-div-12a579"
+      class="interface-attributes"
+    >
+    <div class="interface-attributes-header">
+      <h5 class="header-title">
+        {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.INTERFACE_ATTRIBUTES' | translate }}
+      </h5>
+      <div>
+        <rbang-button
+        tooltipPosition="bottom"
+        pTooltip="Reset All Attributes"
+        (onClick)="commitInterfaceChanges()"
+        [size]="buttonSize"
+        [disabled]="!isInterfaceDirty(interface)"
+        class="panel-icons"
+        label="{{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.BUTTONS.SAVE' | translate }}"
+      >
+     </rbang-button>
+      <rbang-button
+          tooltipPosition="bottom"
+          pTooltip="Reset All Attributes"
+          (onClick)="resetInterfaceChanges()"
+          [size]="buttonSize"
+          [disabled]="!isInterfaceDirty(interface)"
+          class="panel-icons"
+          label="{{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.BUTTONS.RESET' | translate }}"
+        >
+      </rbang-button>
+    </div>
+    </div>
+      <div *ngFor="let assignment of interface.assignments">
+        <div *ngIf="assignment.attribute.directName !== 'isUsed'" class="table-row">
+          <div class="interface-panel-title">
+            <span class="label-with-icon">
+              {{ assignment.attribute.showAttributeName ? assignment.attribute.name : '' }}
+              <button
+                class="rollback-icon-inline"
+                *ngIf="assignmentUtils.getAttributeBindingValue(assignment) !== assignment.libraryValue"
+                (click)="resetAttributeValue(assignment)"
+                [attr.data-qa]="'reset-' + assignment.attribute.directName"
+                [pTooltip]="'Reset to: ' + assignment.libraryValue"
+                tooltipPosition="top"
+              >
+                <img src="assets/icons/rollback-icon.png" alt="Reset" />
+              </button>
+            </span>
+          </div>
+
+          <!-- Readonly case for `type` -->
+          <div *ngIf="assignmentUtils.isReadOnlyAttribute(interface, assignment.attribute.directName)" class="readonly-attribute-field">
+            <span class="readonly-text">{{ assignmentUtils.getValue(interface,assignment.attribute.directName) }}</span>
+          </div>
+
+          <!-- Input control -->
+          <div *ngIf="!assignmentUtils.isReadOnlyAttribute(interface, assignment.attribute.directName)" [ngSwitch]="assignment.attribute.widget.type">
+            <textarea
+            *ngSwitchCase="'Text'"
+            class="attribute-textarea"
+            rows="1"
+            [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+            (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+            [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+            [attr.aria-label]="assignment.attribute.name"
+            [class.invalid]="assignmentUtils.showError(assignment)"
+             ></textarea>
+             <div class="error-text"  *ngIf="assignmentUtils.showError(assignment)">
+              rbName should not be empty
+            </div>
+            <textarea
+              *ngSwitchCase="'TextArea'"
+              class="attribute-textarea"
+              rows="2"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+              [class.invalid]="assignmentUtils.showError(assignment)"
+            ></textarea>
+
+            <select
+              *ngSwitchCase="'Dropdown'"
+              class="attribute-dropdown"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            >
+              <!-- <option *ngFor="let option of assignment.attribute.options || []" [value]="option">
+                {{ option }}
+              </option> -->
+            </select>
+
+            <select
+              *ngSwitchCase="'RadioButton'"
+              class="attribute-dropdown"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            >
+              <!-- <option *ngFor="let option of assignment.attribute.options || []" [value]="option">
+                {{ option }}
+              </option> -->
+            </select>
+
+            <input
+              *ngSwitchCase="'Checkbox'"
+              type="checkbox"
+              [checked]="assignmentUtils.getAttributeBindingValue(assignment) === 'true'"
+              (change)="assignmentUtils.setAttributeBindingValue(assignment, $event ? 'true' : 'false'); onAttributeChanged(interface, assignment.attribute.directName, $event ? 'true' : 'false')"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+
+            <input
+              *ngSwitchCase="'Number'"
+              type="number"
+              step="any"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+
+            <input
+              *ngSwitchCase="'Int-Number'"
+              type="number"
+              step="1"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+
+            <input
+              *ngSwitchCase="'Float-Number'"
+              type="number"
+              step="any"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+
+            <textarea
+              *ngSwitchCase="'String-List'"
+              class="attribute-textarea"
+              rows="2"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+              placeholder="Comma-separated values"
+            ></textarea>
+
+            <input
+              *ngSwitchCase="'Timestamp'"
+              type="datetime-local"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+
+            <input
+              *ngSwitchDefault
+              type="text"
+              [ngModel]="assignmentUtils.getAttributeBindingValue(assignment)"
+              (ngModelChange)="assignmentUtils.setAttributeBindingValue(assignment, $event);onAttributeChanged(interface, assignment.attribute.directName, $event)"
+              [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+              [attr.aria-label]="assignment.attribute.name"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

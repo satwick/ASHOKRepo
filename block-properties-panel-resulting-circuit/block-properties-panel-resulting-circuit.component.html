@@ -1,0 +1,47 @@
+<ng-template [ngIf]="context">
+  <div
+    class="block-panel"
+    data-qa="block-properties-panel-resulting-circuit-div-1b8ej4"
+  >
+    <div
+      class="item-title"
+      data-qa="block-properties-panel-resulting-circuit-div-1oc93k"
+    >
+      {{ this.selectedObjectName ? this.selectedObjectName : this.context.name }}
+    </div>
+    <div
+      class="item-content"
+      data-qa="block-properties-panel-resulting-circuit-div-9dn38f"
+    >
+      <p-tabView (activeIndexChange)="changeTab($event)"
+                 [activeIndex]="activeIndexPropertiesPanel"
+                 data-qa="block-properties-panel-resulting-circuit-rbang-tabview-1ub30g"
+      >
+        <p-tabPanel
+          [header]="
+            'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.GENERAL_TAB.PROPERTIES'
+              | translate
+          "
+          data-qa="block-properties-panel-resulting-circuit-properties-tab"
+        >
+          @if (activeIndexPropertiesPanel === blockPropertyTab.GENERAL) {
+            <app-block-resulting-circuit-tab
+              [resultingCircuit]="context.designObject"
+              data-qa="block-properties-panel-resulting-circuit-app-block-resulting-circuit-tab-2h4j69"
+            ></app-block-resulting-circuit-tab>
+          }
+        </p-tabPanel>
+        <p-tabPanel
+          [header]="'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.PIN_RESERVATION.PIN_RESERVATION' | translate"
+          data-qa="block-properties-panel-pin-reservation-tab">
+          @if (activeIndexPropertiesPanel === blockPropertyTab.PIN_RESERVATION) {
+            <app-block-properties-pin-reservation-tab
+              [circuit]="resultingCircuit"
+              data-qa="block-properties-panel-resulting-circuit-app-block-properties-pin-reservation-tab"
+            ></app-block-properties-pin-reservation-tab>
+          }
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</ng-template>

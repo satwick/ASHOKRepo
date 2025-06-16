@@ -1,0 +1,292 @@
+@if (resource && !isAddMode) {
+  <div class="resource-attributes"
+       data-qa="block-properties-uc-resource-attributes-resource-attributes-div-d7dd42">
+    <h5 [textContent]="
+      'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.UC_RESOURCE_REQUIREMENT_ATTRIBUTES'
+        | translate"
+        data-qa="block-properties-uc-resource-attributes-h5-3a8178"
+    ></h5>
+
+    <div class="attributes-content"
+         data-qa="block-properties-uc-resource-attributes-attributes-content-div-4188d4">
+      <table
+        aria-labelledby="resource-attributes-table"
+        data-qa="block-properties-uc-resource-attributes-table">
+        <thead
+          data-qa="block-properties-uc-resource-attributes-thead">
+        <tr
+          data-qa="block-properties-uc-resource-attributes-header-row">
+          <th
+            data-qa="block-properties-uc-resource-attributes-empty-header"
+            scope="col"></th>
+          <th
+            data-qa="block-properties-uc-resource-attributes-resource-id-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-resource-id-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.RESOURCE_ID' | translate }}
+            </div>
+          </th>
+          <th
+            data-qa="block-properties-uc-resource-attributes-kernel-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-kernel-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.KERNEL' | translate }}
+            </div>
+          </th>
+          <th
+            data-qa="block-properties-uc-resource-attributes-channel-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-channel-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.CHANNEL' | translate }}
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody
+          data-qa="block-properties-uc-resource-attributes-tbody">
+        <tr
+          data-qa="block-properties-uc-resource-attributes-integrator-row">
+          <th
+            data-qa="block-properties-uc-resource-attributes-integrator-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-integrator-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.DB/HW_INTEGRATOR' | translate }}
+            </div>
+          </th>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'resourceId'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-integrator-resource-id">
+            {{ assignmentUtils.getValue(resource, 'resourceId') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'kernel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-integrator-kernel">
+            {{ assignmentUtils.getValue(resource, 'kernel') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'channel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-integrator-channel">
+            {{ assignmentUtils.getValue(resource, 'channel') || '-' }}
+          </td>
+        </tr>
+        <tr
+          data-qa="block-properties-uc-resource-attributes-assigner-row">
+          <th
+            data-qa="block-properties-uc-resource-attributes-assigner-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-assigner-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.PORT_ASSIGNER' | translate }}
+            </div>
+          </th>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'resourceId'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-assigner-resource-id">
+            {{ assignmentUtils.getValue(resource, 'resourceId') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'kernel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-assigner-kernel">
+            {{ assignmentUtils.getValue(resource, 'kernel') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'channel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-assigner-channel">
+            {{ assignmentUtils.getValue(resource, 'channel') || '-' }}
+          </td>
+        </tr>
+        <tr
+          data-qa="block-properties-uc-resource-attributes-reserved-row">
+          <th
+            data-qa="block-properties-uc-resource-attributes-reserved-header"
+            scope="col">
+            <div class="table-header"
+                 data-qa="block-properties-uc-resource-attributes-reserved-text">
+              {{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.KERNEL_ASSIGNED' | translate }}
+            </div>
+          </th>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'resourceId'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-reserved-resource-id">
+            {{ assignmentUtils.getValue(resource, 'resourceId') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'kernel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-reserved-kernel">
+            {{ assignmentUtils.getValue(resource, 'kernel') || '-' }}
+          </td>
+          <td
+            [pTooltip]="String(assignmentUtils.getValue(resource, 'channel'))"
+            class="text-overflow text-centered clickable"
+            data-qa="block-properties-uc-resource-attributes-reserved-channel">
+            {{ assignmentUtils.getValue(resource, 'channel') || '-' }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="button-div-container"
+           data-qa="block-properties-uc-resource-attributes-button-container-div-e7bfad">
+        <rbang-button (onClick)="configureResource(resource)"
+                      [disabled]="!isButtonEnabled"
+                      id="configure-resource-btn"
+                      data-qa="block-properties-uc-resource-attributes-rbang-button-1181a7"
+                      label="{{ 'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.CONFIGURE_BTN' | translate }}">
+        </rbang-button>
+
+        @if (message !== undefined) {
+          <div
+            data-qa="block-properties-uc-resources-attributes-info-message-container-k34mnf"
+            class="info-message-container">
+            <i
+              data-qa="block-properties-uc-resources-attributes-severity-icon-lo34mf"
+              class="severity-icon boschicon-bosch-ic-alert-info-filled"></i>
+            <p
+              data-qa="block-properties-uc-resources-attributes-p-message-h5j5n3">
+              {{ (message || '') | translate }}
+            </p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}@else {
+  <div class="resource-attributes"
+  data-qa="block-properties-uc-resource-attributes-resource-attributes-div-d7dd42">
+<h5 [textContent]="
+     'PROPERTIES.BLOCK_DIAGRAM_PROPERTIES.INTERFACES_TO_MICROCONTROLLER.UC_RESOURCE_REQUIREMENT_ATTRIBUTES'
+       | translate"
+       data-qa="block-properties-uc-resource-attributes-h5-3a8178"
+></h5>
+<div>
+ <div class="grid-table">
+   <!-- Loop over assignments -->
+   @for (assignment of resource?.assignments; track assignment.attribute.name) {
+
+     <!-- Render resourceClass dropdown -->
+    <!-- Subclass dropdown -->
+<div *ngIf="assignment.attribute.directName === 'subclass'" class="grid-cell">
+  <div class="label-with-icon">
+    <div class="label">{{ assignment.attribute.name }}</div>
+  </div>
+  <div class="value">
+    <select class="attribute-dropdown"
+      [(ngModel)]="tempValueMap['subclass']"
+      (ngModelChange)="onResourceClassChange(assignment, $event)"
+      [attr.data-qa]="'attribute-value-resourceClass'"
+      [attr.aria-label]="assignment.attribute.name">
+      <option *ngFor="let option of resourceClassOptions" [value]="option.key">
+        {{ option.key | translate }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<!-- Resource ID dropdown, updated to depend on selected subclass -->
+<div *ngIf="assignment.attribute.directName === 'resourceId'" class="grid-cell">
+  <div class="label-with-icon">
+    <div class="label">{{ assignment.attribute.name }}</div>
+  </div>
+  <div class="value">
+    <select class="attribute-dropdown"
+      [(ngModel)]="tempValueMap['resourceId']"
+      (ngModelChange)="onTempValueChanged(assignment, $event)"
+      [attr.data-qa]="'attribute-value-resourceId'"
+      [attr.aria-label]="assignment.attribute.name">
+      <option *ngFor="let id of getResourceIdsForSelectedSubclass()" [value]="id">
+        {{ id }}
+      </option>
+    </select>
+  </div>
+</div>
+
+     <!-- Other attributes -->
+     <div *ngIf="assignment.attribute.directName !== 'isUsed' && assignment.attribute.directName !== 'subclass' && assignment.attribute.directName !== 'resourceId'" class="grid-cell">
+       <div class="label-with-icon">
+         <div class="label">{{ assignment.attribute.name }}</div>
+       </div>
+       <div class="value">
+         <ng-container [ngSwitch]="assignment.attribute.widget.type">
+           <textarea *ngSwitchCase="'Text'" class="attribute-textarea" rows="1"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name"
+             [class.invalid]="assignmentUtils.showError(assignment)">
+           </textarea>
+
+           <textarea *ngSwitchCase="'TextArea'" class="attribute-textarea" rows="2"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name"
+             [class.invalid]="assignmentUtils.showError(assignment)">
+           </textarea>
+
+           <input *ngSwitchCase="'Checkbox'" type="checkbox"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name" />
+
+           <input *ngSwitchCase="'Number'" type="number" step="any"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name" />
+
+           <input *ngSwitchCase="'Int-Number'" type="number" step="1"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name" />
+
+           <input *ngSwitchCase="'Float-Number'" type="number" step="any"
+             [(ngModel)]="tempValueMap[assignment.attribute.name]"
+             (ngModelChange)="onTempValueChanged(assignment, $event)"
+             [attr.data-qa]="'attribute-value-' + assignment.attribute.directName"
+             [attr.aria-label]="assignment.attribute.name" />
+         </ng-container>
+       </div>
+     </div>
+   }
+ </div>
+
+ <div class="button-div-container"
+      data-qa="block-properties-uc-resource-attributes-button-container-div-e7bfad">
+   <rbang-button (onClick)="updateNewResource(true)"
+                 id="save-resource-btn"
+                 data-qa="block-properties-uc-resource-attributes-rbang-button-1181a7"
+                 label="{{ 'SAVE' | translate }}">
+   </rbang-button>
+
+   @if (message !== undefined) {
+     <div
+       data-qa="block-properties-uc-resources-attributes-info-message-container-k34mnf"
+       class="info-message-container">
+       <i
+         data-qa="block-properties-uc-resources-attributes-severity-icon-lo34mf"
+         class="severity-icon boschicon-bosch-ic-alert-info-filled"></i>
+       <p
+         data-qa="block-properties-uc-resources-attributes-p-message-h5j5n3">
+         {{ (message || '') | translate }}
+       </p>
+     </div>
+   }
+ </div>
+</div>
+</div>
+
+  }
